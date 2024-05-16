@@ -52,7 +52,7 @@ export const registerController = async (req, res) => {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "Error in Registeration",
+      message: "Error in Registration",
       error,
     });
   }
@@ -102,6 +102,7 @@ export const loginController = async (req, res) => {
         email: user.email,
         phone: user.phone,
         address: user.address,
+        role: user.role,
       },
       token,
     });
@@ -114,3 +115,13 @@ export const loginController = async (req, res) => {
     });
   }
 };
+export const testController =(req, res)=>{
+  try{
+    res.send("Protected Route")
+  }
+  catch(error){
+    console.log(error);
+    res.send({error});
+  }
+  
+}
