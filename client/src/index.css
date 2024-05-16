@@ -53,3 +53,10 @@
   color: #ffefba;
   border-bottom: 1px solid #ffefba;
 }
+.register{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 70vh;
+  justify-content: center;
+}

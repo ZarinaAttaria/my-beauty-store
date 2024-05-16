@@ -1,11 +1,12 @@
 import React from 'react'
-import Layout from '../components/Layout/Layout'
+
+import Layoutt from '../components/Layout/Layoutt'
 
 const HomePage = () => {
   return (
-    <Layout>
+    <Layoutt title={"Best Offers - BeautyStore"}>
       <h1>Homepage</h1>
-    </Layout>
+    </Layoutt>
   )
 }
 
