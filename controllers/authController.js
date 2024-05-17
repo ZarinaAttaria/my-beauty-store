@@ -21,6 +21,9 @@ export const registerController = async (req, res) => {
     if (!address) {
       return res.send({ message: "Address is Required" });
     }
+    if (!answer) {
+      return res.send({ message: "Answer is Required" });
+    }
 
     //check user
     const exisitingUser = await userModel.findOne({ email });
@@ -40,7 +43,7 @@ export const registerController = async (req, res) => {
       phone,
       address,
       password: hashedPassword,
-
+      answer
     }).save();
 
     res.status(201).send({
