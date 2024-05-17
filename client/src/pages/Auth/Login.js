@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layoutt from "../../components/Layout/Layoutt";
 import { toast } from 'react-toastify';
 import axios from "axios"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../../styles/AuthStyles.css";
 import { useAuth } from "../../context/auth";
 
@@ -12,6 +12,7 @@ const Login = () => {
     const [password, setPassword] = useState("")
   
     const navigate=useNavigate()
+    const location=useLocation()
    //form func
     const handleSubmit=async(e)=>{
     e.preventDefault()
@@ -29,7 +30,7 @@ user:res.data.user,
 token:res.data.token
     })
     localStorage.setItem('auth', JSON.stringify(res.data))
-        navigate("/")
+        navigate(location.state ||"/")
     
     }
     
@@ -76,6 +77,12 @@ token:res.data.token
       </div>
      
      
+     <div className="mb-3">
+      <button type="button" className="btn btn-primary" onClick={()=>{navigate('/forgot-password')}}>
+          Forgot Password
+        </button>
+     </div>
+
       <button type="submit" className="btn btn-primary">
         LOGIN
       </button>
