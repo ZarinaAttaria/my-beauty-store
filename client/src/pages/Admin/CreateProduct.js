@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
+
+
 const {Option}= Select;
 
 const CreateProduct = () => {
@@ -63,7 +65,7 @@ const handleCreate = async (e) => {
 };
 
   return (
-    <Layoutt title={"Dashboard - Create Product"}>
+    <Layoutt  title={"Dashboard - Create Product"}>
     <div className="container-fluid m-3 p-3 dashboard">
       <div className="row">
         <div className="col-md-3">
@@ -173,7 +175,7 @@ const handleCreate = async (e) => {
         </div>
       </div>
     </div>
-  </Layoutt>
+    </Layoutt>
    
   )
 }
