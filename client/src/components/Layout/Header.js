@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { FaShoppingBag } from "react-icons/fa";
 import { useAuth } from '../../context/auth';
 import  {toast}  from 'react-toastify';
+import SearchInput from './Form/SearchInput';
 const Header = () => {
  const [auth,setAuth]=useAuth()
  const handleLogout=()=>
@@ -24,6 +25,7 @@ const Header = () => {
     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
       <Link to="/" className="navbar-brand" > <FaShoppingBag /> The Beauty Store</Link>
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+      <SearchInput/>
         <li className="nav-item">
           <NavLink to="/" className="nav-link" >Home</NavLink>
         </li>

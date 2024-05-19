@@ -5,6 +5,7 @@ import Layoutt from "../components/Layout/Layoutt";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Prices } from "../components/Layout/Prices";
+import {  useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -14,6 +15,7 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const navigate=useNavigate()
 //get total count
 const getTotal=async()=>{
   try {
@@ -170,7 +172,7 @@ const loadMore = async () => {
                      <div className="card-name-price">
                        <button
                          className="btn btn-info ms-1"
-                        //  onClick={() => navigate(`/product/${p.slug}`)}
+                         onClick={() => navigate(`/product/${p.slug}`)}
                        >
                          More Details
                        </button>
