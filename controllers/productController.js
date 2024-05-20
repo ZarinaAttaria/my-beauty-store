@@ -79,23 +79,21 @@ export const getProductController = async (req, res) => {
 // Get single Product
 export const getSingleProductController = async (req, res) => {
   try {
-    const products = await productModel
+    const product = await productModel
       .findOne({ slug: req.params.slug })
       .select("-photo")
       .populate("category");
-
-    res.status(201).send({
+    res.status(200).send({
       success: true,
-      message: "Single Product fetched !",
-
-      products,
+      message: "Single Product Fetched",
+      product,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
+      message: "Eror while getitng single product",
       error,
-      message: "Error in getting Single product",
     });
   }
 };
@@ -285,6 +283,31 @@ export const searchProductController = async (req, res) => {
     res.status(400).send({
       success: false,
       message: "Error In Search Product API",
+      error,
+    });
+  }
+};
+//  similar product 
+export const relatedProductController = async (req, res) => {
+  try {
+    const { pid, cid } = req.params;
+    const products = await productModel
+      .find({
+        category: cid,
+        _id: { $ne: pid },
+      })
+      .select("-photo")
+      .limit(3)
+      .populate("category");
+    res.status(200).send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error In getting related Product",
       error,
     });
   }

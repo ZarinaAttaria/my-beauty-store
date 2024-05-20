@@ -197,7 +197,7 @@ const loadMore = async () => {
              <div className="m-2 p-3">
                {products && products.length < total && (
                  <button
-                   className="btn loadmore"
+                   className="btn btn-info ms-1 loadmore"
                    onClick={(e) => {
                      e.preventDefault();
                      setPage(page + 1);
