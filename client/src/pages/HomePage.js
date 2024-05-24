@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Prices } from "../components/Layout/Prices";
 import {  useNavigate } from "react-router-dom";
+import { useCart } from "../context/cart";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -16,6 +17,7 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const navigate=useNavigate()
+  const [cart, setCart] = useCart()
 //get total count
 const getTotal=async()=>{
   try {
@@ -178,14 +180,14 @@ const loadMore = async () => {
                        </button>
                        <button
                          className="btn btn-dark ms-1"
-                        //  onClick={() => {
-                        //    setCart([...cart, p]);
-                        //    localStorage.setItem(
-                        //      "cart",
-                        //      JSON.stringify([...cart, p])
-                        //    );
-                        //    toast.success("Item Added to cart");
-                        //  }}
+                         onClick={() => {
+                           setCart([...cart, p]);
+                           localStorage.setItem(
+                             "cart",
+                             JSON.stringify([...cart, p])
+                           );
+                           toast.success("Item Added to cart");
+                         }}
                        >
                          ADD TO CART
                        </button>
