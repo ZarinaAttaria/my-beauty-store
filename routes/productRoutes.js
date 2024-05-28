@@ -46,9 +46,8 @@ router.get(
   getSingleProductController
 );
 
-// get photo route
-
-router.get("/product-photo/:id", productPhotoController);
+//get photo
+router.get("/product-photo/:pid", productPhotoController);
 
 // delete product route
 

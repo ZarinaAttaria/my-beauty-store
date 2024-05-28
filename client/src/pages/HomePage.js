@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { Prices } from "../components/Layout/Prices";
 import {  useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
-
+import "../styles/Homepage.css"
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -114,7 +114,12 @@ const loadMore = async () => {
   };
   return (
     <Layoutt title={"Best Offers - BeautyStore"}>
-          
+          <img
+        src="p1.png"
+        className="banner-img"
+        alt="bannerimage"
+        width={"100%"}
+      />
          <div className="container-fluid row mt-3 home-page">
            <div className="col-md-3 filters">
              <h4 className="text-center">Filter By Category</h4>

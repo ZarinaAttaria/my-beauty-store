@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
 import { AiFillWarning } from "react-icons/ai";
 import axios from "axios";
+import "../styles/CartStyles.css"
 
 import Layoutt from "../components/Layout/Layoutt";
 import { toast } from "react-toastify";

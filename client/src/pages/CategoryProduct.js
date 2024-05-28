@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Layoutt from '../components/Layout/Layoutt'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import "../styles/CategoryProductStyles.css"
 
 const CategoryProduct = () => {
     const [products, setProducts]= useState([])
