@@ -6,7 +6,7 @@ import { useNavigate} from "react-router-dom";
 import "../../styles/AuthStyles.css";
 
 const ForgotPassword = () => {
-    const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [answer, setAnswer] = useState("");
 
@@ -22,7 +22,7 @@ const ForgotPassword = () => {
         answer,
       });
       if (res && res.data.success) {
-        toast.success(res.data.message && res.data.message);
+        toast.success(res.data && res.data.message);
 
         navigate("/login");
       } else {
@@ -34,7 +34,7 @@ const ForgotPassword = () => {
     }
   };
   return (
-    <Layoutt title={"Forgot Password - The Beauty Store "}>
+    <Layoutt title={"Forgot Password - Ecommerce APP"}>
       <div className="form-container ">
         <form onSubmit={handleSubmit}>
           <h4 className="title">RESET PASSWORD</h4>
@@ -78,8 +78,8 @@ const ForgotPassword = () => {
           </button>
         </form>
       </div>
-   </Layoutt>
-  )
+    </Layoutt>
+  );
 }
 
 export default ForgotPassword

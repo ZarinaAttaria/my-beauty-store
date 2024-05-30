@@ -1,7 +1,15 @@
 .product-details {
     margin-top: 100px !important;
+    background-color: #c1b6b6;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
   }
-  
+  .pd{
+    background-color: rgb(255, 240, 243);
+
+
+  }
   .product-details-info {
     display: flex;
     flex-direction: column;
@@ -11,6 +19,11 @@
   
   .product-details-info h6 {
     margin-bottom: 20px !important;
+  }
+  .cart-btn{
+    background-color: pink !important;
+    border: none;
+    font-weight: 800;
   }
   
   .similar-products .card {
@@ -35,6 +48,7 @@
     border-bottom-right-radius: 5px;
     font-size: 14px;
     font-weight: bold;
+
   }
   
   .similar-products .card-text {

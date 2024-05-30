@@ -389,3 +389,46 @@ export const brainTreePaymentController = async (req, res) => {
     console.log(error);
   }
 };
+
+
+// Controller for fetching featured products
+export const getFeaturedProductsController = async (req, res) => {
+  try {
+    // Fetch the first 5 products sorted by createdAt in descending order
+    const featuredProducts = await productModel
+      .find({})
+      .sort({ createdAt: -1 })
+      .limit(5);
+
+    res.status(200).send({
+      success: true,
+      message: "Featured Products Fetched Successfully",
+      featuredProducts,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in fetching featured products",
+      error,
+    });
+  }
+};
+export const getRecommendationsController = async (req, res) => {
+  try {
+    const { pid } = req.params;
+    // Replace the below line with your actual recommendation logic
+    const recommendations = await productModel.find({ _id: { $ne: pid } }).limit(3).select("name _id");
+
+    res.status(200).send({
+      success: true,
+      recommendations,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in getting recommendations",
+      error,
+    });
+  }

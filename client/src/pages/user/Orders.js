@@ -15,12 +15,13 @@ const Orders = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     if (auth?.token) getOrders();
   }, [auth?.token]);
   return (
-   <Layoutt title={"Your Orders"}>
-    <div className="container-flui p-3 m-3 dashboard">
+    <Layoutt title={"Your Orders"}>
+      <div className="container-flui p-3 m-3 dashboard">
         <div className="row">
           <div className="col-md-3">
             <UserMenu />
@@ -79,7 +80,7 @@ const Orders = () => {
         </div>
       </div>
     </Layoutt>
-  )
+  );
 }
 
 export default Orders

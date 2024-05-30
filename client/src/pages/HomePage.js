@@ -1,23 +1,49 @@
-import React, { useState, useEffect } from "react";
-import { Checkbox, Radio } from "antd";
+import React, { useState, useEffect, useRef } from "react";
+import { Checkbox, Radio,Carousel  } from "antd";
 import Layoutt from "../components/Layout/Layoutt";
 
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Prices } from "../components/Layout/Prices";
-import {  useNavigate } from "react-router-dom";
+import {  Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
 import "../styles/Homepage.css"
+import useCategory from "../hooks/useCategory";
+import ProductCard from "./ProductCard";
+import useProducts from "../hooks/useProducts";
+
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
   const [total, setTotal] = useState(0);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(4);
   const [loading, setLoading] = useState(false);
   const navigate=useNavigate()
   const [cart, setCart] = useCart()
+  const [recommendations, setRecommendations] = useState([]);
+  const categorie = useCategory();
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const scrollRef = useRef(null);
+
+  //fetured products
+  useEffect(() => {
+    const fetchFeaturedProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/v1/product/featured-products'); // Assuming your backend route is '/api/featured-products'
+        setFeaturedProducts(response.data.featuredProducts);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching featured products:', error);
+      }
+    };
+
+    fetchFeaturedProducts();
+  }, []);
+
+
+
 //get total count
 const getTotal=async()=>{
   try {
@@ -111,15 +137,71 @@ const loadMore = async () => {
     } catch (error) {
       console.log(error);
     }
+
+  };
+  
+  
+
+  const fetchRecommendations = async (productId) => {
+    try {
+      const { data } = await axios.get(`http://localhost:8080/api/v1/product-recommendations/${productId}`);
+      setRecommendations(data?.recommendations);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Layoutt title={"Best Offers - BeautyStore"}>
-          <img
-        src="p1.png"
-        className="banner-img"
-        alt="bannerimage"
-        width={"100%"}
-      />
+      <div className="top">
+      <section className="banner">
+        <Carousel autoplay>
+          <div>
+            <img src="/p1.png" alt="Banner 1" />
+          </div>
+          <div>
+            <img src="/p1.png" alt="Banner 2" />
+          </div>
+          <div>
+            <img src="/p1.png" alt="Banner 3" />
+          </div>
+        </Carousel>
+      </section>
+      
+      <h1>Featured Products</h1>
+      <div className="product-grid" ref={scrollRef}>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          featuredProducts.map(product => (
+            <div className="product-card" key={product._id}>
+              <Link to={`/product/${product.slug}`}>
+                <img src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`} alt={product.name} />
+              </Link>
+              <div className="product-info">
+                <h3>{product.name}</h3>
+                <p>${product.price}</p>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+      <section className="category-section">
+  <h2 className="cat">Shop by Category</h2>
+  <div className="category-list">
+    {categories.map(category => (
+      <Link key={category._id} to={`/category/${category.slug}`} className="category">
+        {category.name === 'makeup' && <img src="makeup.png" alt="Makeup" className="category-image" />}
+        {category.name === 'skincare' && <img src="skincare.png" alt="Skincare" className="category-image" />}
+        {category.name === 'haircare' && <img src="haircare.png" alt="Haircare" className="category-image" />}
+        {category.name === 'bathAndBody' && <img src="body.png" alt="Haircare" className="category-image" />}
+
+
+      </Link>
+    ))}
+  </div>
+</section>
+      </div>
+       
          <div className="container-fluid row mt-3 home-page">
            <div className="col-md-3 filters">
              <h4 className="text-center">Filter By Category</h4>
@@ -154,6 +236,13 @@ const loadMore = async () => {
              </div>
            </div>
            <div className="col-md-9 ">
+           {products?.map((p) => (
+      
+           <button className="btn btn-secondary" onClick={() => fetchRecommendations(p._id)}>
+                  Get Recommendations
+                </button>
+      
+           ))}
              <h1 className="text-center">All Products</h1>
              <div className="d-flex flex-wrap">
                {products?.map((p) => (
@@ -178,13 +267,13 @@ const loadMore = async () => {
                      </p>
                      <div className="card-name-price">
                        <button
-                         className="btn btn-info ms-1"
+                         className="btn btn-info btn-wide1 ms-2"
                          onClick={() => navigate(`/product/${p.slug}`)}
                        >
-                         More Details
+                         MORE DETAILS
                        </button>
                        <button
-                         className="btn btn-dark ms-1"
+                         className="btn btn-dark btn-wide2 ms-1"
                          onClick={() => {
                            setCart([...cart, p]);
                            localStorage.setItem(
@@ -198,9 +287,12 @@ const loadMore = async () => {
                        </button>
                      </div>
                    </div>
+                   
                  </div>
+                 
                ))}
              </div>
+           
              <div className="m-2 p-3">
                {products && products.length < total && (
                  <button

@@ -1,56 +1,60 @@
-import React, {useState, useEffect} from 'react'
-import Layoutt from '../../components/Layout/Layoutt'
-import UserMenu from '../../components/Layout/UserMenu'
-import { useAuth } from '../../context/auth'
-import { toast } from 'react-toastify'
-import axios from 'axios'
-const Profile = () => {
-   //context
-   const [auth, setAuth] = useAuth();
-   //state
-   const [name, setName] = useState("");
-   const [email, setEmail] = useState("");
-   const [password, setPassword] = useState("");
-   const [phone, setPhone] = useState("");
-   const [address, setAddress] = useState("");
- 
-   //get user data
-   useEffect(() => {
-     const { email, name, phone, address } = auth?.user;
-     setName(name);
-     setPhone(phone);
-     setEmail(email);
-     setAddress(address);
-   }, [auth?.user]);
- 
-   // form function
-   const handleSubmit = async (e) => {
-     e.preventDefault();
-     try {
-       const { data } = await axios.put("/api/v1/auth/profile", {
-         name,
-         email,
-         password,
-         phone,
-         address,
-       });
-       if (data?.errro) {
-         toast.error(data?.error);
-       } else {
-         setAuth({ ...auth, user: data?.updatedUser });
-         let ls = localStorage.getItem("auth");
-         ls = JSON.parse(ls);
-         ls.user = data.updatedUser;
-         localStorage.setItem("auth", JSON.stringify(ls));
-         toast.success("Profile Updated Successfully");
-       }
-     } catch (error) {
-       console.log(error);
-       toast.error("Something went wrong");
-     }
-   };
+import React, { useState, useEffect } from 'react';
+import Layoutt from '../../components/Layout/Layoutt';
+import UserMenu from '../../components/Layout/UserMenu';
+import { useAuth } from '../../context/auth';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
-   return (
+const Profile = () => {
+  // Context
+  const [auth, setAuth] = useAuth();
+  
+  // State
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+
+  // Get user data
+  useEffect(() => {
+    if (auth?.user) {
+      const { email = '', name = '', phone = '', address = '' } = auth.user;
+      setName(name);
+      setPhone(phone);
+      setEmail(email);
+      setAddress(address);
+    }
+  }, [auth?.user]);
+
+  // Form function
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.put("/api/v1/auth/profile", {
+        name,
+        email,
+        password,
+        phone,
+        address,
+      });
+      if (data?.error) {
+        toast.error(data.error);
+      } else {
+        setAuth({ ...auth, user: data.updatedUser });
+        let ls = localStorage.getItem("auth");
+        ls = JSON.parse(ls);
+        ls.user = data.updatedUser;
+        localStorage.setItem("auth", JSON.stringify(ls));
+        toast.success("Profile Updated Successfully");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
+
+  return (
     <Layoutt title={"Your Profile"}>
       <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
@@ -67,7 +71,6 @@ const Profile = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="form-control"
-                    id="exampleInputEmail1"
                     placeholder="Enter Your Name"
                     autoFocus
                   />
@@ -78,8 +81,7 @@ const Profile = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
-                    id="exampleInputEmail1"
-                    placeholder="Enter Your Email "
+                    placeholder="Enter Your Email"
                     disabled
                   />
                 </div>
@@ -89,7 +91,6 @@ const Profile = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="form-control"
-                    id="exampleInputPassword1"
                     placeholder="Enter Your Password"
                   />
                 </div>
@@ -99,7 +100,6 @@ const Profile = () => {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="form-control"
-                    id="exampleInputEmail1"
                     placeholder="Enter Your Phone"
                   />
                 </div>
@@ -109,7 +109,6 @@ const Profile = () => {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     className="form-control"
-                    id="exampleInputEmail1"
                     placeholder="Enter Your Address"
                   />
                 </div>
@@ -125,4 +124,5 @@ const Profile = () => {
     </Layoutt>
   );
 };
-export default Profile
+
+export default Profile;

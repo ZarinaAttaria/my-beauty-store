@@ -5,7 +5,9 @@ import {
   braintreeTokenController,
   createProductController,
   deleteProductController,
+  getFeaturedProductsController,
   getProductController,
+  getRecommendationsController,
   getSingleProductController,
   productCategoryController,
   productCountController,
@@ -105,4 +107,9 @@ router.get("/product-category/:slug", productCategoryController);
 router.get('/braintree/token',braintreeTokenController )
 
 router.post('/braintree/payment', requireSignIn, brainTreePaymentController)
+
+// Route for fetching featured products
+router.get("/featured-products", getFeaturedProductsController)
+
+router.get('/product-recommendations/:pid', getRecommendationsController);
 export default router;
