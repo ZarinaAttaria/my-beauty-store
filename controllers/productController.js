@@ -414,21 +414,34 @@ export const getFeaturedProductsController = async (req, res) => {
     });
   }
 };
-export const getRecommendationsController = async (req, res) => {
-  try {
-    const { pid } = req.params;
-    // Replace the below line with your actual recommendation logic
-    const recommendations = await productModel.find({ _id: { $ne: pid } }).limit(3).select("name _id");
 
-    res.status(200).send({
-      success: true,
-      recommendations,
-    });
+
+// Controller for products starting from price 450
+export const getProductsByPriceRange450 = async (req, res) => {
+  try {
+    const products = await productModel.find({ price: { $gte: 450 } }).select("-photo");
+    res.status(200).send({ success: true, products });
   } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
-      message: "Error in getting recommendations",
-      error,
-    });
+    res.status(500).send({ success: false, message: "Error in fetching products", error });
   }
+};
+
+// Controller for products starting from price 109
+export const getProductsByPriceRange109 = async (req, res) => {
+  try {
+    const products = await productModel.find({ price: { $gte: 109 } }).select("-photo");
+    res.status(200).send({ success: true, products });
+  } catch (error) {
+    res.status(500).send({ success: false, message: "Error in fetching products", error });
+  }
+};
+
+// Controller for products starting from price 1450
+export const getProductsByPriceRange1450 = async (req, res) => {
+  try {
+    const products = await productModel.find({ price: { $gte: 1450 } }).select("-photo");
+    res.status(200).send({ success: true, products });
+  } catch (error) {
+    res.status(500).send({ success: false, message: "Error in fetching products", error });
+  }
+};

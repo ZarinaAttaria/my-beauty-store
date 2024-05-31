@@ -1,63 +1,103 @@
 /* ===================================
 ========= register page  */
 .form-container {
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 70vh;
-    flex-direction: column;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  flex-direction: column;
+  background-color: #ffdee9;
+  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+  padding: 20px;
+  border-radius: 10px;
+}
 
-    background-image: linear-gradient(0deg, #cfa1b0 0%, #b5fffc 100%);
+.form-container form {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-container form .title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-container form .mb-2 {
+  margin-bottom: 15px;
+}
+
+.form-container form .form-control {
+  border: none;
+  border-bottom: 2px solid #000;
+  border-radius: 0;
+  padding: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-container form .form-control:focus {
+  border-color: #d994b5;
+  outline: none;
+  box-shadow: none;
+}
+
+.form-container form .btn {
+  border: 1px solid #d994b5;
+  border-radius: 5px;
+  background-color: #d994b5;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-container form .btn:hover {
+  background: linear-gradient(to right, #434343, #000000);
+  color: #fff;
+}
+
+.forgot-btn {
+  background-color: #434343a4 !important;
+  border: 0 !important;
+  color: white !important;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.forgot-btn:hover {
+  color: white !important;
+  background-color: #333 !important;
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 10px;
+    border-radius: 5px;
   }
-  
+
   .form-container form {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 20px;
-    background-color: #fff;
+    max-width: 100%;
   }
-  
+
   .form-container form .title {
-    text-align: center;
-    margin-bottom: 15px;
-    font-weight: bold;
-    font-family: "Playfair Display", serif;
+    font-size: 20px;
   }
-  
-  .form-container form input {
-    border: none;
-    border-bottom: 1px solid #000;
-    border-radius: 0;
+
+  .form-container form .btn {
+    padding: 8px;
+    font-size: 14px;
   }
-  
-  .form-container form button {
-    border: 1px solid black;
-    border-radius: 0;
-    background-color: #000;
-    color: white;
-    width: 250px;
-  }
-  
-  .form-container form button:hover {
-    border: 1px solid black;
-    background: #000000; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to right,
-      #434343,
-      #000000
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to right,
-      #434343,
-      #000000
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
-  
-  .forgot-btn {
-    background-color: #434343a4 !important;
-    border: 0 !important;
-  }
-  
-  .forgot-btn:hover {
-    color: white !important;
-  }
+}

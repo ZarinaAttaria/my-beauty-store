@@ -27,6 +27,7 @@ const HomePage = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const scrollRef = useRef(null);
 
+
   //fetured products
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
@@ -140,34 +141,36 @@ const loadMore = async () => {
 
   };
   
-  
-
-  const fetchRecommendations = async (productId) => {
-    try {
-      const { data } = await axios.get(`http://localhost:8080/api/v1/product-recommendations/${productId}`);
-      setRecommendations(data?.recommendations);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const fetchRecommendations = (productId) => {
+    fetch(`http://localhost:5001/recommendations/${productId}`)
+        .then(response => response.json())
+        .then(data => setRecommendations(data));
+  }
   return (
     <Layoutt title={"Best Offers - BeautyStore"}>
       <div className="top">
       <section className="banner">
         <Carousel autoplay>
-          <div>
-            <img src="/p1.png" alt="Banner 1" />
-          </div>
-          <div>
-            <img src="/p1.png" alt="Banner 2" />
-          </div>
-          <div>
-            <img src="/p1.png" alt="Banner 3" />
-          </div>
+        <div className="carousel-item">
+        <img src="/p3.webp" alt="Banner 1" />
+        </div>
+
+        <div className="carousel-item">
+        {categories.map(category => (
+      <Link key={category._id} to={`/price/${category.slug}`} className="category">
+        {category.name === 'maybelline' &&   <img src="/p1.png" alt="Banner 2" />}
+            
+      </Link>
+        ))}
+        
+        </div>
+        <div className="carousel-item">
+          <img src="/p2.webp" alt="Banner 3" />
+        </div>
         </Carousel>
       </section>
-      
-      <h1>Featured Products</h1>
+    
+      <h1 className="headings">FEATURED PRODUCTS</h1>
       <div className="product-grid" ref={scrollRef}>
         {loading ? (
           <p>Loading...</p>
@@ -186,7 +189,7 @@ const loadMore = async () => {
         )}
       </div>
       <section className="category-section">
-  <h2 className="cat">Shop by Category</h2>
+  <h1 className="headings">SHOP BY CATERGORY</h1>
   <div className="category-list">
     {categories.map(category => (
       <Link key={category._id} to={`/category/${category.slug}`} className="category">
@@ -200,121 +203,29 @@ const loadMore = async () => {
     ))}
   </div>
 </section>
+   
+      <div>
+        <h1 className="headings">BRAND OF THE WEEK</h1>
+        <img src="WEBSITE-7.webp" alt="Makeup" className="allitems" />
       </div>
-       
-         <div className="container-fluid row mt-3 home-page">
-           <div className="col-md-3 filters">
-             <h4 className="text-center">Filter By Category</h4>
-             <div className="d-flex flex-column">
-               {categories?.map((c) => (
-                 <Checkbox
-                   key={c._id}
-                   onChange={(e) => handleFilter(e.target.checked, c._id)}
-                 >
-                   {c.name}
-                 </Checkbox>
-               ))}
-             </div>
-             {/* price filter */}
-             <h4 className="text-center mt-4">Filter By Price</h4>
-             <div className="d-flex flex-column">
-               <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-                 {Prices?.map((p) => (
-                   <div key={p._id}>
-                     <Radio value={p.array}>{p.name}</Radio>
-                   </div>
-                 ))}
-               </Radio.Group>
-             </div>
-             <div className="d-flex flex-column">
-               <button
-                 className="btn btn-danger"
-                 onClick={() => window.location.reload()}
-               >
-                 RESET FILTERS
-               </button>
-             </div>
-           </div>
-           <div className="col-md-9 ">
-           {products?.map((p) => (
-      
-           <button className="btn btn-secondary" onClick={() => fetchRecommendations(p._id)}>
-                  Get Recommendations
-                </button>
-      
-           ))}
-             <h1 className="text-center">All Products</h1>
-             <div className="d-flex flex-wrap">
-               {products?.map((p) => (
-                 <div className="card m-2" key={p._id}>
-                   <img
-                     src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
-                     className="card-img-top"
-                     alt={p.name}
-                   />
-                   <div className="card-body">
-                     <div className="card-name-price">
-                       <h5 className="card-title">{p.name}</h5>
-                       <h5 className="card-title card-price">
-                         {p.price.toLocaleString("en-US", {
-                           style: "currency",
-                           currency: "USD",
-                         })}
-                       </h5>
-                     </div>
-                     <p className="card-text ">
-                       {p.description.substring(0, 60)}...
-                     </p>
-                     <div className="card-name-price">
-                       <button
-                         className="btn btn-info btn-wide1 ms-2"
-                         onClick={() => navigate(`/product/${p.slug}`)}
-                       >
-                         MORE DETAILS
-                       </button>
-                       <button
-                         className="btn btn-dark btn-wide2 ms-1"
-                         onClick={() => {
-                           setCart([...cart, p]);
-                           localStorage.setItem(
-                             "cart",
-                             JSON.stringify([...cart, p])
-                           );
-                           toast.success("Item Added to cart");
-                         }}
-                       >
-                         ADD TO CART
-                       </button>
-                     </div>
-                   </div>
-                   
-                 </div>
-                 
-               ))}
-             </div>
-           
-             <div className="m-2 p-3">
-               {products && products.length < total && (
-                 <button
-                   className="btn btn-info ms-1 loadmore"
-                   onClick={(e) => {
-                     e.preventDefault();
-                     setPage(page + 1);
-                   }}
-                 >
-                   {loading ? (
-                     "Loading ..."
-                   ) : (
-                     <>
-                       {" "}
-                       Loadmore 
-                     </>
-                   )}
-                 </button>
-               )}
-             </div>
-           </div>
-         </div>
+      <div className="best-in-less">
+  <h1 className="headings">BEST IN LESS</h1>
+  <div className="category-images">
+    {categories.map(category => (
+      <Link key={category._id} to={`/price/${category.slug}`}>
+        {category.name === 'krylon' && <img src="kryolan.png" alt="Makeup" />}
+        {category.name === 'maybelline' && <img src="maybelline.png" alt="Skincare" />}
+      </Link>
+    ))}
+  </div>
+</div>
+      <div>
+      <h1 className="headings">SHOP ALL PRODUCTS</h1>
+      </div>
+      <Link to={'/allproducts'}>
+     < img src="all.webp" alt="Makeup" className="allitems" />
+        </Link>  
+        </div>  
     </Layoutt>
   );
 };

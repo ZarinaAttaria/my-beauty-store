@@ -5,9 +5,24 @@ import {
   braintreeTokenController,
   createProductController,
   deleteProductController,
+
   getFeaturedProductsController,
   getProductController,
-  getRecommendationsController,
+
+
+
+  getProductsByPriceRange109,
+
+
+
+  getProductsByPriceRange1450,
+
+
+
+  getProductsByPriceRange450,
+
+
+
   getSingleProductController,
   productCategoryController,
   productCountController,
@@ -111,5 +126,9 @@ router.post('/braintree/payment', requireSignIn, brainTreePaymentController)
 // Route for fetching featured products
 router.get("/featured-products", getFeaturedProductsController)
 
-router.get('/product-recommendations/:pid', getRecommendationsController);
+// Define routes for products by price range
+router.get("/products/price/450", getProductsByPriceRange450);
+router.get("/products/price/109", getProductsByPriceRange109);
+router.get("/products/price/1450", getProductsByPriceRange1450);
+
 export default router;
