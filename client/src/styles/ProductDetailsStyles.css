@@ -1,6 +1,7 @@
 .product-details {
     margin-top: 100px !important;
-    background-color: #c1b6b6;
+    background-color: #c99ab4;
+
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
@@ -62,3 +63,14 @@
   .similar-products .card-img-top {
     height: 300px !important;
   }
+  /* src/styles/ProductDetailsStyles.css */
+.review {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.review strong {
+  display: block;
+  margin-bottom: 5px;
+}

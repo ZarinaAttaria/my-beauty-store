@@ -416,32 +416,58 @@ export const getFeaturedProductsController = async (req, res) => {
 };
 
 
-// Controller for products starting from price 450
-export const getProductsByPriceRange450 = async (req, res) => {
+
+// Controller for fetching trending products
+export const getTrendingProductsController = async (req, res) => {
   try {
-    const products = await productModel.find({ price: { $gte: 450 } }).select("-photo");
-    res.status(200).send({ success: true, products });
+    const trendingProducts = await orderModel.aggregate([
+      { $unwind: "$products" },
+      {
+        $group: {
+          _id: "$products",
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { count: -1 } },
+      { $limit: 3 },
+      {
+        $lookup: {
+          from: "products",
+          localField: "_id",
+          foreignField: "_id",
+          as: "productDetails"
+        }
+      },
+      {
+        $unwind: "$productDetails"
+      },
+      {
+        $project: {
+          _id: 1,
+          count: 1,
+          name: "$productDetails.name",
+          price: "$productDetails.price",
+          category: "$productDetails.category",
+          slug: "$productDetails.slug",
+          photo: "$productDetails.photo"
+        }
+      }
+    ]);
+
+    res.status(200).send({
+      success: true,
+      message: "Trending Products Fetched Successfully",
+      trendingProducts,
+    });
   } catch (error) {
-    res.status(500).send({ success: false, message: "Error in fetching products", error });
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in fetching trending products",
+      error,
+    });
   }
 };
 
-// Controller for products starting from price 109
-export const getProductsByPriceRange109 = async (req, res) => {
-  try {
-    const products = await productModel.find({ price: { $gte: 109 } }).select("-photo");
-    res.status(200).send({ success: true, products });
-  } catch (error) {
-    res.status(500).send({ success: false, message: "Error in fetching products", error });
-  }
-};
 
-// Controller for products starting from price 1450
-export const getProductsByPriceRange1450 = async (req, res) => {
-  try {
-    const products = await productModel.find({ price: { $gte: 1450 } }).select("-photo");
-    res.status(200).send({ success: true, products });
-  } catch (error) {
-    res.status(500).send({ success: false, message: "Error in fetching products", error });
-  }
-};
+

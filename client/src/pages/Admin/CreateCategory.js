@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import CategoryForm from '../../components/Layout/Form/CategoryForm';
 import {Modal} from'antd';
-
+import "./AdminDashboard.css"
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -87,6 +87,9 @@ const CreateCategory = () => {
     }
   };
   return (
+    <div className='allPage'>
+
+ 
     <Layoutt title={"Dashboard - Create Category"}>
       <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
@@ -94,7 +97,11 @@ const CreateCategory = () => {
             <AdminMenu />
           </div>
           <div className="col-md-9">
-            <h1>Manage Category</h1>
+            <div className='heading'>
+
+            <h1 className='heading1'>Manage Category</h1>
+
+            </div>
             <div className="p-3 w-50">
               <CategoryForm
                 handleSubmit={handleSubmit}
@@ -156,6 +163,8 @@ const CreateCategory = () => {
         </div>
       </div>
     </Layoutt>
+  </div>
+
   );
 };
 export default CreateCategory

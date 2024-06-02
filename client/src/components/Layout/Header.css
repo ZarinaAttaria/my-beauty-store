@@ -1,18 +1,78 @@
 /* Header.css */
 
+/* Set the navbar background to black and link colors to white */
 .navbar {
+  background-color: black !important;
+  color: white !important;
+  height: 150px;
 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    height: 150px;
-  }
-  .nav-link {
-    color: white !important;
-    font-size: 16px !important;
-    margin: 0 10px !important;
-  }
-  .badge{
-    color: white !important;
-    font-size: 16px;
-    margin: 0 10px;
-  }
+.footer {
+  background-color: black !important;
+  color: white !important;
+  height: 150px;
+
+}
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .dropdown-toggle,
+.navbar .dropdown-item,
+.navbar-toggler-icon {
+
+  color: white !important;
+}
+
+.navbar .nav-link.active {
+  
+  color: #ccc !important;
+}
+.navbar .nav-link:hover {
+  
+  color: rgb(251, 55, 251) !important;
+
+}
+
+/* Dropdown menu styles */
+.navbar .dropdown-menu {
+  background-color: black;
+  border: none;
+}
+
+.navbar .dropdown-item {
+  color: white !important;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #333;
+  color: rgb(251, 55, 251) !important;
+}
+
+/* Navbar toggler styles */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28%255, %255, %255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Header.css */
+
+/* Additional styles for cart icon and badge */
+.navbar .nav-link .badge {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-link .badge .image {
+  width: 30px; /* Adjust the size as needed */
+  height: 30px; /* Adjust the size as needed */
+  margin-left: 5px; /* Space between the text and the icon */
+  vertical-align: middle; /* Aligns the image vertically */
+}
+
+
+
+
+

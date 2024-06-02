@@ -4,7 +4,7 @@ import UserMenu from '../../components/Layout/UserMenu';
 import { useAuth } from '../../context/auth';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-
+import "../Admin/AdminDashboard.css"
 const Profile = () => {
   // Context
   const [auth, setAuth] = useAuth();
@@ -55,6 +55,8 @@ const Profile = () => {
   };
 
   return (
+    <div className='allPage'>
+
     <Layoutt title={"Your Profile"}>
       <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
@@ -122,6 +124,8 @@ const Profile = () => {
         </div>
       </div>
     </Layoutt>
+    </div>
+
   );
 };
 

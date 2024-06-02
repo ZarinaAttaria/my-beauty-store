@@ -4,6 +4,8 @@ import Layoutt from '../../components/Layout/Layoutt'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import {Link} from 'react-router-dom';
+import "./AdminDashboard.css"
+
 const Products = () => {
   const [products, setProducts] = useState([]);
 
@@ -23,13 +25,18 @@ const Products = () => {
     getAllProducts();
   }, []);
   return (
+    <div className='allPage'>
+
     <Layoutt>
       <div className="row dashboard">
         <div className="col-md-3">
           <AdminMenu />
         </div>
         <div className="col-md-9 ">
-          <h1 className="text-center">All Products List</h1>
+        <div className='heading'>
+            <h1 className='heading1' >All Products List</h1>
+
+            </div>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <Link
@@ -54,6 +61,8 @@ const Products = () => {
         </div>
       </div>
     </Layoutt>
+    </div>
+
   );
   };
 

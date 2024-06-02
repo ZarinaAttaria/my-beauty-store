@@ -1,0 +1,35 @@
+.admin-panel {
+    background: #343a40;
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-panel h4 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .admin-panel .list-group-item {
+    border: none;
+    border-radius: 10px;
+    background: #495057;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .admin-panel .list-group-item:hover {
+    background: #adb5bd;
+    color: #343a40;
+  }
+  
+  .admin-panel .list-group-item.active {
+    background: #6c757d;
+    color: white;
+  }
+  
+  .container-fluid {
+    padding-top: 20px;
+  }

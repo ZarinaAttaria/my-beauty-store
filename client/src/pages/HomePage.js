@@ -9,8 +9,7 @@ import {  Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
 import "../styles/Homepage.css"
 import useCategory from "../hooks/useCategory";
-import ProductCard from "./ProductCard";
-import useProducts from "../hooks/useProducts";
+
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -26,7 +25,7 @@ const HomePage = () => {
   const categorie = useCategory();
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const scrollRef = useRef(null);
-
+  const [trendingProducts, setTrendingProducts] = useState([]);
 
   //fetured products
   useEffect(() => {
@@ -141,18 +140,34 @@ const loadMore = async () => {
 
   };
   
-  const fetchRecommendations = (productId) => {
-    fetch(`http://localhost:5001/recommendations/${productId}`)
-        .then(response => response.json())
-        .then(data => setRecommendations(data));
+ // Fetch trending products
+ const fetchTrendingProducts = async () => {
+  try {
+    const { data } = await axios.get("/api/v1/product/trending-products");
+    if (data.success) {
+      setTrendingProducts(data.trendingProducts);
+    }
+  } catch (error) {
+    console.log(error);
   }
+};
+
+useEffect(() => {
+  getAllCategory();
+  fetchTrendingProducts();
+}, []);
   return (
     <Layoutt title={"Best Offers - BeautyStore"}>
       <div className="top">
       <section className="banner">
         <Carousel autoplay>
         <div className="carousel-item">
-        <img src="/p3.webp" alt="Banner 1" />
+        {categories.map(category => (
+      <Link key={category._id} to={`/price/${category.slug}`} className="category">
+        {category.name === 'revolution' &&    <img src="/p3.webp" alt="Banner 1" />}
+            
+      </Link>
+        ))}
         </div>
 
         <div className="carousel-item">
@@ -206,8 +221,32 @@ const loadMore = async () => {
    
       <div>
         <h1 className="headings">BRAND OF THE WEEK</h1>
-        <img src="WEBSITE-7.webp" alt="Makeup" className="allitems" />
+        {categories.map(category => (
+      <Link key={category._id} to={`/price/${category.slug}`}>
+        {category.name === 'StLondon' &&  <img src="WEBSITE-7.webp" alt="Makeup" className="allitems" />}
+       
+      </Link>
+    ))}
+       
       </div>
+      
+      <div className="trending-section">
+  <h1 className="headings">Trending Products</h1>
+  <div className="trending-products-grid">
+    {trendingProducts.map((product) => (
+      <Link key={product._id} to={`/product/${product.slug}`} className="product-link">
+        <div className="trending-product-card">
+          <img src={`/api/v1/product/product-photo/${product._id}`} alt={product.name} className="product-image" />
+          <div className="trending-product-info">
+            <h3 className="product-name">{product.name}</h3>
+            <p className="product-price">${product.price}</p>
+          </div>
+        </div>
+      </Link>
+    ))}
+  </div>
+</div>
+
       <div className="best-in-less">
   <h1 className="headings">BEST IN LESS</h1>
   <div className="category-images">

@@ -5,6 +5,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import AdminMenu from '../../components/Layout/AdminMenu';
 import { Select } from 'antd';
+import "./AdminDashboard.css"
+
 const { Option } = Select;
 
 const UpdateProduct = () => {
@@ -102,6 +104,7 @@ const UpdateProduct = () => {
     }
   };
   return (
+    <div className='allPage'>
     <Layoutt title={"Dashboard - Create Product"}>
       <div className="container-fluid m-3 p-3">
         <div className="row">
@@ -109,7 +112,10 @@ const UpdateProduct = () => {
             <AdminMenu />
           </div>
           <div className="col-md-9">
-            <h1>Update Product</h1>
+          <div className='heading'>
+            <h1 className='heading1' >Update Product</h1>
+
+            </div>
             <div className="m-1 w-75">
               <Select
                 bordered={false}
@@ -229,6 +235,8 @@ const UpdateProduct = () => {
         </div>
       </div>
     </Layoutt>
+  </div>
+
   );
 };
 export default UpdateProduct

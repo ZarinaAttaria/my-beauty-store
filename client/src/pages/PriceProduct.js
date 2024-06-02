@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import "../styles/CategoryProductStyles.css"
 
+
 const PriceProduct = () => {
     const params = useParams();
     const navigate = useNavigate();
@@ -26,7 +27,10 @@ const PriceProduct = () => {
     };
   
   return (
+    <div className='top'>
+
     <Layoutt>
+
       <div className="container mt-3 category">
   
         <div className="row">
@@ -94,6 +98,8 @@ const PriceProduct = () => {
         </div>
       </div>
     </Layoutt>
+    </div>
+
   )
 }
 

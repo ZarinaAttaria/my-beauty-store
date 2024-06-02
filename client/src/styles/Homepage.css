@@ -15,6 +15,23 @@
   margin-left: 400px;
   font-family: "Playfair Display", serif;
 }
+.contactus1{
+  background-color: #c99ab4;
+
+}
+.allPage{
+  background-color: rgb(255, 240, 243);
+
+}
+.contactcard{
+  background-color: #f9f9f9;
+  width: 350px;
+ margin-top: 0px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
+}
 /* Homepage */
 
 .banner {
@@ -253,13 +270,14 @@
   width: 250px; 
   font-weight: 500;
 
+
 font-size: 2vh;
 }
 .btn-wide2{
   height: 40px;
   width: 250px; 
   font-weight: 500;
-  background-color: pink ;
+  background-color: rgb(241, 149, 164) ;
 font-size: 2vh;
 border: none;
 }
@@ -291,4 +309,68 @@ align-items:center;
 
 .category-images img:hover {
   transform: scale(1.05);
+}
+/* Trending Products */
+.trending-section {
+  margin-top: 40px;
+  background-color: rgb(255, 240, 243);
+  padding: 20px;
+
+
+}
+
+.trending-section h2 {
+  text-align: center;
+  color: #333;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px;
+}
+
+.trending-products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.trending-product-card {
+  background-color: #d79cca;
+  width: 240px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.trending-product-card:hover {
+  transform: translateY(-5px);
+}
+
+.trending-product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.trending-product-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.trending-product-info h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.trending-product-info p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: green;
+}
+
+.trending-product-price {
+  color: #28a745;
+  font-weight: bold;
 }

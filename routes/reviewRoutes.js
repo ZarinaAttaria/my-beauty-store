@@ -1,10 +1,20 @@
-import express from 'express';
-import { addReviewController, getReviewsController } from '../controllers/reviewController.js';
-import { requireSignIn } from '../middlewares/authMiddleware.js';
+import express from "express";
+import {
+  createReviewController,
+  getProductReviewsController,
+  deleteReviewController,
+} from "../controllers/reviewController.js";
+import { requireSignIn, isAdmin } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.post('/add-review', requireSignIn, addReviewController)
-router.post('/get-review',  getReviewsController)
+// Create review route
+router.post("/create-review", requireSignIn, createReviewController);
 
+// Get reviews for a product route
+router.get("/get-reviews/:productId", getProductReviewsController);
 
+// Delete review route
+router.delete("/delete-review/:reviewId", requireSignIn, deleteReviewController);
+
+export default router;

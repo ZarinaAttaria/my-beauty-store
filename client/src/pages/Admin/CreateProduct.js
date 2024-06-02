@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import "./AdminDashboard.css"
 
 
 const {Option}= Select;
@@ -65,6 +66,7 @@ const CreateProduct = () => {
   };
 
   return (
+    <div className='allPage'>
     <Layoutt title={"Dashboard - Create Product"}>
       <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
@@ -72,7 +74,10 @@ const CreateProduct = () => {
             <AdminMenu />
           </div>
           <div className="col-md-9">
-            <h1>Create Product</h1>
+            <div className='heading'>
+            <h1 className='heading1' >Create Product</h1>
+
+            </div>
             <div className="m-1 w-75">
               <Select
                 bordered={false}
@@ -138,7 +143,7 @@ const CreateProduct = () => {
                   type="number"
                   value={price}
                   placeholder="write a Price"
-                  className="form-control"
+                  className="form-control in"
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
@@ -167,7 +172,7 @@ const CreateProduct = () => {
                 </Select>
               </div>
               <div className="mb-3">
-                <button className="btn btn-primary" onClick={handleCreate}>
+                <button className="btn submitBtn btn-primary" onClick={handleCreate}>
                   CREATE PRODUCT
                 </button>
               </div>
@@ -176,6 +181,8 @@ const CreateProduct = () => {
         </div>
       </div>
     </Layoutt>
+    </div>
+    
   );
 }
 

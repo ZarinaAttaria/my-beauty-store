@@ -30,6 +30,7 @@ import AdminOrders from './pages/Admin/AdminOrders';
 import AllProducts from './pages/AllProducts';
 import ProductPage from './pages/user/ProductPage';
 import PriceProduct from './pages/PriceProduct';
+import "./App.css"
 function App() {
   return (
    <>

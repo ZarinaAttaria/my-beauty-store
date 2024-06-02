@@ -9,8 +9,7 @@ import {  Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
 import "../styles/Homepage.css"
 import useCategory from "../hooks/useCategory";
-import ProductCard from "./ProductCard";
-import useProducts from "../hooks/useProducts";
+
 
 
 
@@ -149,9 +148,11 @@ const loadMore = async () => {
         .then(data => setRecommendations(data));
   }
   return (
+    <div className="allPage">
+
     <Layoutt title={"Best Offers - BeautyStore"}>
      
-         <div className="container-fluid row mt-3 home-page">
+         <div className="container-fluid row mt-3 ">
            <div className="col-md-3 filters">
              <h4 className="text-center">Filter By Category</h4>
              <div className="d-flex flex-column">
@@ -263,6 +264,8 @@ const loadMore = async () => {
            </div>
          </div>
     </Layoutt>
+    </div>
+
   )
 }
 

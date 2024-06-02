@@ -1,0 +1,57 @@
+.dashboard {
+  background-color: rgb(255, 240, 243);
+  min-height: 100vh;
+  padding: 20px;
+}
+.all{
+  background-color: rgb(255, 240, 243);
+  margin-top: 0px;
+
+}
+.admincard {
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  padding: 20px;
+  margin: 10px 0;
+  background-color: #c99ab4;
+
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size:larger;
+
+  color: #d40a79;
+  margin-bottom: 15px;
+}
+.heading{
+padding: 15px !important;
+font-weight: bold;
+background-color: #c99ab4;
+
+width: 600px;
+border-radius: 10px;
+margin-bottom: 20px;
+}
+.heading1{
+  margin-left: 150px;
+}
+.allPage{
+  margin-top: 0px;
+  background-color: rgb(255, 240, 243);
+  margin-top: 0px;
+
+}
+.submitBtn{
+  background-color: rgb(241, 149, 164) ;
+  border: rgb(241, 149, 164);
+  margin-left: 100px;
+  
+}
