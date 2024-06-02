@@ -9,6 +9,7 @@ import {  Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
 import "../styles/Homepage.css"
 import useCategory from "../hooks/useCategory";
+import ChatBox from "./user/Chatbox";
 
 
 const HomePage = () => {
@@ -265,6 +266,8 @@ useEffect(() => {
      < img src="all.webp" alt="Makeup" className="allitems" />
         </Link>  
         </div>  
+
+        <ChatBox/> {/* Add ChatBox component here */}
     </Layoutt>
   );
 };

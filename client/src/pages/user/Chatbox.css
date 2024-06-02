@@ -1,0 +1,69 @@
+/* ChatBox.css */
+
+/* Styling for chat icon */
+.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    cursor: pointer;
+  }
+  
+  .chat-icon img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  /* Styling for chat box */
+  .chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: -260px; /* Initially hide the chat box */
+    width: 250px; /* Adjust width to make it small */
+    background-color: #fce4ec; /* Pink color palette */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9998;
+    transition: right 0.3s ease; /* Only transition the right property */
+  }
+  
+  .chat-box.open {
+    right: 20px; /* Adjust right position to bring it to the bottom right corner */
+  }
+  
+  /* Styling for chat box content */
+  .chat-header {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center; /* Center the text */
+  }
+  
+  .chat-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .chat-body {
+    padding: 10px;
+  }
+  
+  .chat-footer {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .chat-button {
+    background-color: #ff4081; /* Pink color palette */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .chat-button:hover {
+    background-color: #d81b60; /* Darker pink on hover */
+  }
+  
