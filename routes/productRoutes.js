@@ -5,16 +5,9 @@ import {
   braintreeTokenController,
   createProductController,
   deleteProductController,
-
   getFeaturedProductsController,
   getProductController,
-
-
-
-  
-
-
-  getSingleProductController,
+getSingleProductController,
   getTrendingProductsController,
   productCategoryController,
   productCountController,

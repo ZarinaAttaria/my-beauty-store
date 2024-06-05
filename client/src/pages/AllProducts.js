@@ -202,11 +202,11 @@ const loadMore = async () => {
                    />
                    <div className="card-body">
                      <div className="card-name-price">
-                       <h5 className="card-title">{p.name}</h5>
-                       <h5 className="card-title card-price">
+                       <h5 className="tit1">{p.name}</h5>
+                       <h5 className=" pr1">
                          {p.price.toLocaleString("en-US", {
                            style: "currency",
-                           currency: "USD",
+                           currency: "PKR",
                          })}
                        </h5>
                      </div>
@@ -215,13 +215,14 @@ const loadMore = async () => {
                      </p>
                      <div className="card-name-price">
                        <button
-                         className="btn btn-info btn-wide1 ms-2"
+                         className="btn btn-info  ms-2"
                          onClick={() => navigate(`/product/${p.slug}`)}
                        >
                          MORE DETAILS
                        </button>
                        <button
-                         className="btn btn-dark btn-wide2 ms-1"
+                         className="btn btn-dark  ms-1 mt-2"
+                         style={{background: "pink", border:"pink"}}
                          onClick={() => {
                            setCart([...cart, p]);
                            localStorage.setItem(

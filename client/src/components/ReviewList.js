@@ -1,18 +1,17 @@
-// src/components/ReviewsList.js
 import React from 'react';
-
+import "./reviewStyle.css"
 const ReviewsList = ({ reviews }) => {
   return (
-    <div>
-      <h4>Reviews</h4>
+    <div className="reviews-list">
+      <h3>Reviews</h3>
       {reviews.length === 0 ? (
         <p>No reviews yet</p>
       ) : (
         reviews.map((review) => (
           <div key={review._id} className="review">
             <strong>{review.user.name}</strong>
-            <p>Rating: {review.rating}</p>
-            <p>{review.comment}</p>
+            <div className="rating">Rating: {review.rating}</div>
+            <p className="comment">{review.comment}</p>
           </div>
         ))
       )}

@@ -8,6 +8,8 @@ import {
   getOrdersController,
   getAllOrdersController,
   orderStatusController,
+  getAllUsersController,
+  deleteUserController,
 } from "../controllers/authController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 
@@ -52,5 +54,11 @@ router.put(
   isAdmin,
   orderStatusController
 );
+
+// Fetch all users
+router.get("/all-users", requireSignIn, isAdmin, getAllUsersController);
+
+// Delete a user
+router.delete("/delete-user/:userId", requireSignIn, isAdmin, deleteUserController);
 
 export default router;

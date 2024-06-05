@@ -255,3 +255,26 @@ export const orderStatusController = async (req, res) => {
     });
   }
 };
+
+// Controller to fetch all registered users
+export const getAllUsersController = async (req, res) => {
+  try {
+    const users = await userModel.find({});
+    res.status(200).json(users);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Error while fetching users", error });
+  }
+};
+
+// Controller to delete a user
+export const deleteUserController = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    await userModel.findByIdAndDelete(userId);
+    res.status(200).json({ success: true, message: "User deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Error while deleting user", error });
+  }
+};

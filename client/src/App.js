@@ -32,6 +32,8 @@ import ProductPage from './pages/user/ProductPage';
 import PriceProduct from './pages/PriceProduct';
 import Chatbot from './components/Chatbot'; // Import the Chatbot component
 import "./App.css"
+import FAQs from './pages/FAQs';
+import TermsConditions from './pages/TermsConditions';
 function App() {
   return (
    <>
@@ -80,8 +82,14 @@ function App() {
     <Route path='/about' element={<About/>} />
     <Route path='/contact' element={<Contact/>} />
     <Route path='/policy' element={<Policy/>} />
+
+
+
+
     <Route path='*' element={<Pagenotfound/>} />
     <Route path='/chatbot' element={<Chatbot />} /> 
+    <Route path='/faqs' element={<FAQs/>} />
+    <Route path='/terms-condition' element={<TermsConditions/>} />
    </Routes>
    
    </>

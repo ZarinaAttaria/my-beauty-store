@@ -40,7 +40,7 @@ const CreateCategory = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something wwent wrong in getting catgeory");
+      toast.error("Something went wrong in getting catgeory");
     }
   };
 
@@ -83,7 +83,7 @@ const CreateCategory = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      toast.error("Somtihing went wrong");
+      toast.error("Something went wrong");
     }
   };
   return (
@@ -97,11 +97,11 @@ const CreateCategory = () => {
             <AdminMenu />
           </div>
           <div className="col-md-9">
-            <div className='heading'>
+        
 
-            <h1 className='heading1'>Manage Category</h1>
+            <h1 className='orderheading'>Manage Category</h1>
 
-            </div>
+   
             <div className="p-3 w-50">
               <CategoryForm
                 handleSubmit={handleSubmit}
@@ -114,7 +114,7 @@ const CreateCategory = () => {
                 <thead>
                   <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col" className='col2'>Actions</th>
                   </tr>
                 </thead>
                 <tbody>

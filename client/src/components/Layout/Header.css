@@ -5,32 +5,35 @@
   background-color: black !important;
   color: white !important;
   height: 150px;
+  padding: 1rem;
 
 }
+
 
 .footer {
   background-color: black !important;
   color: white !important;
   height: 150px;
-
 }
+
+/* Navbar brand and links */
 .navbar .navbar-brand,
 .navbar .nav-link,
 .navbar .dropdown-toggle,
-.navbar .dropdown-item,
-.navbar-toggler-icon {
-
+.navbar .dropdown-item {
   color: white !important;
 }
 
 .navbar .nav-link.active {
-  
   color: #ccc !important;
 }
-.navbar .nav-link:hover {
-  
-  color: rgb(251, 55, 251) !important;
 
+.navbar .nav-link:hover {
+  color: rgb(251, 55, 251) !important;
+}
+
+.link2:hover {
+  color: rgb(251, 55, 251) !important;
 }
 
 /* Dropdown menu styles */
@@ -51,13 +54,12 @@
 /* Navbar toggler styles */
 .navbar-toggler {
   border: none;
+  color: white !important;
 }
 
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28%255, %255, %255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
-
-/* Header.css */
 
 /* Additional styles for cart icon and badge */
 .navbar .nav-link .badge {
@@ -72,7 +74,63 @@
   vertical-align: middle; /* Aligns the image vertically */
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar {
+    height: auto; /* Adjust height for smaller screens */
+    padding: 0.5rem;
+  }
 
+  .navbar .navbar-brand {
+    margin-right: 0;
+  }
 
+  .navbar .nav-link {
+    padding: 0.5rem 1rem;
+  }
 
+  .navbar .dropdown-menu {
+    background-color: black;
+    border: none;
+  }
 
+  .navbar .dropdown-item {
+    color: white !important;
+  }
+
+  .navbar .dropdown-item:hover {
+    background-color: #333;
+    color: rgb(251, 55, 251) !important;
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+  }
+
+  .navbar .nav-link .badge {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar .nav-link .badge .image {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .nav-link {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .navbar .nav-link .badge .image {
+    width: 20px; /* Smaller icon size for very small screens */
+    height: 20px;
+  }
+}

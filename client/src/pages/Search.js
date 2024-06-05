@@ -2,10 +2,21 @@ import React from 'react';
 import Layoutt from '../components/Layout/Layoutt';
 import { useSearch } from '../context/search';
 import '../styles/SearchStyles.css'; // Import your custom CSS file
+import { toast } from 'react-toastify';
+import { useCart } from '../context/cart';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const [values, setValues] = useSearch();
+  const [cart, setCart] = useCart();
+  const navigate = useNavigate();
 
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    localStorage.setItem('cart', JSON.stringify([...cart, product]));
+    toast.success("Item Added to cart");
+  };
   return (
     <div className='allPage'>
     <Layoutt>
@@ -32,8 +43,8 @@ const Search = () => {
                   </p>
                   <p className="card-price">$ {p.price}</p>
                   <div className="card-buttons">
-                    <button className="btn btn-primary">More Details</button>
-                    <button className="btn addbtn btn-secondary">Add to Cart</button>
+                    <button className="btn btn-primary"  onClick={() => navigate(`/product/${p.slug}`)}>More Details</button>
+                    <button className="btn addbtn btn-secondary" onClick={() => addToCart(p)}>Add to Cart</button>
                   </div>
                 </div>
               </div>

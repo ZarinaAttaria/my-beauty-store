@@ -161,11 +161,11 @@ useEffect(() => {
     <Layoutt title={"Best Offers - BeautyStore"}>
       <div className="top">
       <section className="banner">
-        <Carousel autoplay>
+        <Carousel autoplay className="bannerimage">
         <div className="carousel-item">
         {categories.map(category => (
       <Link key={category._id} to={`/price/${category.slug}`} className="category">
-        {category.name === 'revolution' &&    <img src="/p3.webp" alt="Banner 1" />}
+        {category.name === 'revolution' &&    <img   src="/p3.webp" alt="Banner 1" />}
             
       </Link>
         ))}
@@ -181,7 +181,13 @@ useEffect(() => {
         
         </div>
         <div className="carousel-item">
-          <img src="/p2.webp" alt="Banner 3" />
+        {categories.map(category => (
+      <Link key={category._id} to={`/price/${category.slug}`} className="category">
+       
+        {category.name === 'sale' &&     <img src="/p2.webp" alt="Banner 3" /> }
+            
+      </Link>
+        ))}
         </div>
         </Carousel>
       </section>
@@ -220,10 +226,10 @@ useEffect(() => {
   </div>
 </section>
    
-      <div>
-        <h1 className="headings">BRAND OF THE WEEK</h1>
+      <div >
+        <h1 className="brand-of-week-section">BRAND OF THE WEEK</h1>
         {categories.map(category => (
-      <Link key={category._id} to={`/price/${category.slug}`}>
+      <Link className="brand-of-week" key={category._id} to={`/price/${category.slug}`}>
         {category.name === 'StLondon' &&  <img src="WEBSITE-7.webp" alt="Makeup" className="allitems" />}
        
       </Link>
@@ -266,7 +272,7 @@ useEffect(() => {
      < img src="all.webp" alt="Makeup" className="allitems" />
         </Link>  
         </div>  
-
+        
         <ChatBox/> {/* Add ChatBox component here */}
     </Layoutt>
   );

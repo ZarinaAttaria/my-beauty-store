@@ -26,7 +26,7 @@ const CartPage = () => {
       });
       return total.toLocaleString("en-US", {
         style: "currency",
-        currency: "USD",
+        currency: "PKR",
       });
     } catch (error) {
       console.log(error);
@@ -112,7 +112,7 @@ const CartPage = () => {
       <div className="col-md-5 cart-details">
         <h5 className="product-name">{p.name}</h5>
         <p className="product-description">{p.description.substring(0, 30)}...</p>
-        <p className="product-price">Price: ${p.price}</p>
+        <p className="product-price">Price: Rs{p.price}</p>
       </div>
       <div className="col-md-3 cart-remove-btn">
         <button
