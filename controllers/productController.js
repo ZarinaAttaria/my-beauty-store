@@ -398,7 +398,7 @@ export const getFeaturedProductsController = async (req, res) => {
     const featuredProducts = await productModel
       .find({})
       .sort({ createdAt: -1 })
-      .limit(5);
+      .limit(4);
 
     res.status(200).send({
       success: true,

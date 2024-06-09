@@ -30,16 +30,13 @@ const CategoryProduct = () => {
   };
 
   return (
-    <div className='allPage'>
-    <Layoutt>
-     
-        <h4 className="text-center head category-title">Category - {category?.name}</h4>
+    <div className="allPage">
+      <Layoutt>
+        <h4 className="text-center head">Category - {category?.name}</h4>
         <h6 className="text-center head1">{products?.length} result(s) found</h6>
-    
-       
-        <div className="row mt-4">
+        <div className="row mt-4 category">
           <div className="col-md-10 offset-md-1">
-            <div className="d-flex flex-wrap justify-content-center">
+            <div className="d-flex flex-wrap  cardclass">
               {products?.map((p) => (
                 <div className="card m-3" key={p._id}>
                   <img
@@ -85,23 +82,9 @@ const CategoryProduct = () => {
                 </div>
               ))}
             </div>
-            {/* <div className="m-2 p-3">
-              {products && products.length < total && (
-                <button
-                  className="btn btn-warning"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setPage(page + 1);
-                  }}
-                >
-                  {loading ? "Loading ..." : "Load more"}
-                </button>
-              )}
-            </div> */}
           </div>
         </div>
-    
-    </Layoutt>
+      </Layoutt>
     </div>
   );
 }

@@ -94,9 +94,9 @@ const CreateCategory = () => {
       <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
           <div className="col-md-3">
-            <AdminMenu />
+            <AdminMenu className="admenu" />
           </div>
-          <div className="col-md-9">
+          <div className="col-md-9 creatediv">
         
 
             <h1 className='orderheading'>Manage Category</h1>

@@ -55,3 +55,15 @@ margin-bottom: 20px;
   margin-left: 100px;
   
 }
+
+@media (max-width: 576px) {
+  .admenu{
+    margin-bottom: 100px;
+  }
+  .creatediv{
+    margin-top: 50px;
+  }
+  .orderheading{
+    width: 400px;
+  }
+}

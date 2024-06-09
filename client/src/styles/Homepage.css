@@ -34,31 +34,23 @@
  
 }
 .banner {
-  width: 100%;
-  max-width: 1200px;
-  top: 0;
-  margin-top: 0; /* Remove top margin */
+  position: relative;
+  margin-bottom: 40px;
+  margin-top: 0; 
+  padding-top: 0;
 }
 
-
- 
-
-
-.carousel-item {
-  
+.bannerimage .carousel-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 400px; /* Adjust the height as needed */
-  overflow: hidden;
-
+  height: 400px; 
 }
 
-.carousel-item img {
-  
+.bannerimage img {
   width: 100%;
-  height: 100%;
-  object-fit: contain; 
+  height: 100%; 
+  object-fit: cover; 
 }
 
 .home-page h1 {
@@ -108,6 +100,7 @@
 .card img {
   width: 100%;
   height: auto;
+  
   border-radius: 5px;
 }
 
@@ -167,19 +160,15 @@
 
 
 .product-card {
-  background-color: #f9f9f9;
+
   width: 240px;
-  height: 350px; /* Set a fixed height for consistency */
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   background-color: rgb(160, 208, 221);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+
 }
 
 .product-card:hover {
@@ -245,21 +234,22 @@
   color: #333;
 }
 .category-section {
-  margin-top: 20px;
-  margin-bottom: 0px;
-  
-  height: 500px;
+  margin-top: 40px;
+ height: 500px;
+
+
 }
  
-.category-list {
+ .category-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   
 }
 
-.category {
-  flex: 0 0 calc(25% - 10px); /* 25% width minus some margin for spacing */
-  margin-bottom: 0px;
+ .category {
+  flex: 0 0 calc(25% - 10px); 
+  margin-bottom: 10px;
   text-align: center;
   text-decoration: none;
   color: #333;
@@ -270,8 +260,8 @@
 .category img {
   width: 100%; /* Ensure images fill the container */
   max-width: 100%; /* Ensure images don't exceed their container */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 8px; /* Add some space between the image and category name */
+  height: auto; 
+  margin-bottom: 8px; 
 }
 
 .category-name {
@@ -439,4 +429,132 @@ align-items:center;
 }
 .pagePad{
   padding: 20px;
+}
+/* Existing styles omitted for brevity */
+
+@media (max-width: 768px) {
+  .top h1 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .cat {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .card, .product-card, .trending-product-card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .category {
+    flex: 0 0 calc(50% - 10px);
+  }
+
+  .bannerimage .carousel-item {
+    height: 250px;
+  }
+
+  .category-section {
+    height: auto;
+  }
+
+  .category-images img {
+    width: 100%;
+    height: auto;
+  }
+
+  .category-section,
+  .brand-of-week-section {
+    margin-top: 20px; 
+  }
+}
+
+@media (max-width: 576px) {
+  .product-nav button {
+    font-size: 16px;
+  }
+
+  .btn-wide1, .btn-wide2 {
+    width: 100%;
+    font-size: 1.5vh;
+  }
+
+  
+
+  .category-images img {
+    width: 100%;
+    height: auto;
+  }
+  .category-list img {
+    width: 100%;
+    height: auto;
+  }
+  .bannerimage .carousel-item {
+    height: 200px;
+  }
+
+
+
+ 
+
+    .category-section, .best-in-less {
+    padding: 10px;
+  }
+
+  .brand-of-week-section {
+    margin-top: 10px; /* Adjust the margin as needed */
+  }
+  .category-section{
+height: 600px;
+  }
+  .product-card{
+    width: 40%;
+    height: auto;
+  }
+
+.trending-product-card{
+  width: 40%;
+    height: auto;
+}
+}
+
+@media (max-width: 360px) {
+  .top h1, .cat {
+    font-size: 1.2em;
+  }
+
+  .product-grid, .trending-products-grid, .category-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card, .product-card, .trending-product-card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .category {
+    flex: 0 0 100%;
+    margin-bottom: 10px;
+  }
+
+  .bannerimage .carousel-item {
+    height: 180px;
+  }
+
+  .category-images img {
+    width: 100%;
+    height: auto;
+  }
+
+  .category-section, .trending-section {
+    margin-top: 20px;
+  }
+
+  .category-section,
+  .brand-of-week-section {
+    margin-top: 10px; 
+  }
 }

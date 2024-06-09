@@ -193,7 +193,9 @@ useEffect(() => {
       </section>
     
       <h1 className="headings">FEATURED PRODUCTS</h1>
-      <div className="product-grid" ref={scrollRef}>
+      <div>
+
+      <div className="trending-products-grid" ref={scrollRef}>
         {loading ? (
           <p>Loading...</p>
         ) : (
@@ -210,15 +212,17 @@ useEffect(() => {
           ))
         )}
       </div>
+      </div>
+
       <section className="category-section">
   <h1 className="headings">SHOP BY CATERGORY</h1>
   <div className="category-list">
     {categories.map(category => (
       <Link key={category._id} to={`/category/${category.slug}`} className="category">
-        {category.name === 'makeup' && <img src="makeup.png" alt="Makeup" className="category-image" />}
         {category.name === 'skincare' && <img src="skincare.png" alt="Skincare" className="category-image" />}
         {category.name === 'haircare' && <img src="haircare.png" alt="Haircare" className="category-image" />}
         {category.name === 'bathAndBody' && <img src="body.png" alt="Haircare" className="category-image" />}
+        {category.name === 'krylon' && <img src="makeup.png" alt="Makeup" className="category-image" />}
 
 
       </Link>
@@ -226,7 +230,7 @@ useEffect(() => {
   </div>
 </section>
    
-      <div >
+      <div className="" >
         <h1 className="brand-of-week-section">BRAND OF THE WEEK</h1>
         {categories.map(category => (
       <Link className="brand-of-week" key={category._id} to={`/price/${category.slug}`}>
@@ -241,15 +245,17 @@ useEffect(() => {
   <h1 className="headings">Trending Products</h1>
   <div className="trending-products-grid">
     {trendingProducts.map((product) => (
+       <div className="trending-product-card">
       <Link key={product._id} to={`/product/${product.slug}`} className="product-link">
-        <div className="trending-product-card">
+       
           <img src={`/api/v1/product/product-photo/${product._id}`} alt={product.name} className="product-image" />
           <div className="trending-product-info">
             <h3 className="product-name">{product.name}</h3>
             <p className="product-price">${product.price}</p>
-          </div>
         </div>
       </Link>
+      </div>
+
     ))}
   </div>
 </div>
@@ -273,7 +279,7 @@ useEffect(() => {
         </Link>  
         </div>  
         
-        <ChatBox/> {/* Add ChatBox component here */}
+        <ChatBox/> 
     </Layoutt>
   );
 };

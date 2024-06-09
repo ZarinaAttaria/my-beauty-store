@@ -8,7 +8,10 @@
   min-height: 70vh;
   flex-direction: column;
   background-color: #ffdee9;
-  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+  background-image:url("backimg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   padding: 20px;
   border-radius: 10px;
 }
@@ -80,7 +83,6 @@
   color: white !important;
   background-color: #333 !important;
 }
-
 @media (max-width: 768px) {
   .form-container {
     padding: 10px;
@@ -89,7 +91,7 @@
 
   .form-container form {
     padding: 20px;
-    max-width: 100%;
+    max-width: 90%; /* Adjusted for smaller screens */
   }
 
   .form-container form .title {

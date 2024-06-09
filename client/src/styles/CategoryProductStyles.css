@@ -1,6 +1,22 @@
+/* CategoryProductStyles.css */
+
+
+
+.head {
+  padding: 15px;
+  font-weight: bold;
+  background-color: #c99ab4;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.head1 {
+  font-weight: bold;
+}
+
 .category {
-  margin-top: 80px !important;
- 
+  margin-top: 80px;
   padding: 20px;
   border-radius: 10px;
 }
@@ -11,22 +27,7 @@
   color: #333;
   margin-bottom: 20px;
 }
-.head{
-  padding: 15px !important;
-  font-weight: bold;
-  background-color: #c99ab4;
-  
-  width: 1110px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  }
-  .head1{
-    font-weight: bold;
-  }
-  .boxes{
-  background-color: #c99ab4;
 
-  }
 .price-filter {
   margin-bottom: 20px;
 }
@@ -40,9 +41,9 @@
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
- 
-  width: 18rem;
+  width: 17rem;
   transition: transform 0.3s;
+  margin-bottom: 20px;
 }
 
 .category .card:hover {
@@ -76,7 +77,16 @@
 }
 
 .category .card-img-top {
-  height: 300px !important;
+  height: 300px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+@media (max-width: 576px) {
+  .allPage{
+    padding: 0%;
+  }
+  
+}
+.boxes{
+  background-color: #c99ab4;
 }
