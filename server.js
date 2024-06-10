@@ -10,7 +10,7 @@ import reviewRoutes from "./routes/reviewRoutes.js"
 import chatbotRoutes from "./routes/chatbot.js";
 import mongoose from "mongoose";
 import cors from "cors";
-
+const path=require('path')
 //configure env
 dotenv.config();
 
@@ -41,6 +41,13 @@ app.get("/", (req, res) => {
 
 //PORT
 const PORT = process.env.PORT || 8080;
+
+//production script
+app.use(express.static("./client/build"));
+app.get("*", (req,res)=>{
+  res.sendFile(path.resolve(__dirname, "client", "build" , "index.html"))
+})
+
 
 //run listen
 app.listen(PORT, () => {
